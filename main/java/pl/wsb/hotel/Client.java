@@ -2,6 +2,9 @@ package pl.wsb.hotel;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.UUID;
 
 public class Client {
     private String id;
@@ -11,15 +14,14 @@ public class Client {
     private String phoneNumber;
     private String email;
     private String address;
+    private Collection<String> roomIdHistory;
 
-    public Client(String id, String firstName, String lastName, LocalDate birthDate, String phoneNumber, String email, String address) {
-        this.id = id;
+    public Client(String firstName, String lastName, LocalDate birthDate) {
+        this.id = UUID.randomUUID().toString();
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.address = address;
+        this.roomIdHistory = new ArrayList<>();
     }
 
     public int getAge() {
@@ -38,10 +40,6 @@ public class Client {
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -90,6 +88,14 @@ public class Client {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public void addRoomIdToReservationHistory(String id) {
+        this.roomIdHistory.add(id);
+    }
+
+    public Collection<String> getRoomIdHistory() {
+        return this.roomIdHistory;
     }
 
     @Override

@@ -1,18 +1,25 @@
 package pl.wsb.hotel;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class RoomReservation {
+    private String id;
     private LocalDate date;
     private Boolean isConfirmed;
-    private Client client;
-    private Room room;
+    private String clientId;
+    private String roomId;
 
-    public RoomReservation(LocalDate date, Client client, Room room) {
+    public RoomReservation(String clientId, String roomId, LocalDate date) {
+        this.id = UUID.randomUUID().toString();
         this.date = date;
         this.isConfirmed = false;
-        this.client = client;
-        this.room = room;
+        this.clientId = clientId;
+        this.roomId = roomId;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public void confirmReservation() {
@@ -20,7 +27,7 @@ public class RoomReservation {
     }
 
     public String getReservationInfo() {
-        return String.format("Date: %s, is confirmed: %s, client: %s, room: %s, description: %s", this.date, this.isConfirmed, this.client.getFullName(), this.room.getId(), this.room.getDescription());
+        return String.format("Date: %s, is confirmed: %s, client: %s, room: %s", this.date, this.isConfirmed, this.clientId, this.roomId);
     }
 
     public LocalDate getDate() {
@@ -31,12 +38,12 @@ public class RoomReservation {
         this.date = date;
     }
 
-    public Client getClient() {
-        return client;
+    public String getClientId() {
+        return this.clientId;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClient(String clientId) {
+        this.clientId = clientId;
     }
 
     public Boolean getConfirmed() {
@@ -47,12 +54,12 @@ public class RoomReservation {
         isConfirmed = confirmed;
     }
 
-    public Room getRoom() {
-        return room;
+    public String getRoom() {
+        return this.roomId;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setRoom(String roomId) {
+        this.roomId = roomId;
     }
 
     @Override

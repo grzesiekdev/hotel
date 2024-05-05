@@ -3,8 +3,8 @@ package pl.wsb.hotel;
 import java.time.LocalDate;
 
 public class PremiumClient extends Client{
-    public PremiumClient(String id, String firstName, String lastName, LocalDate birthDate, String phoneNumber, String email, String address) {
-        super(id, firstName, lastName, birthDate, phoneNumber, email, address);
+    public PremiumClient(String firstName, String lastName, LocalDate birthDate) {
+        super(firstName, lastName, birthDate);
     }
 
     enum PremiumAccountType {
